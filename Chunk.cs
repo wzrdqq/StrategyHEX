@@ -31,9 +31,19 @@ namespace NoStepBack
 
         }
 
-        public void SetTile(TileType type, int x, int y)
+        public void SetTile(TileType type, int x, int y, int dop)
         {
             tiles[x][y] = new Tile(type);
+
+            if (dop == 0)
+            {
+                tiles[x][y].NewObjectTileType(objectTileType.None);
+            }
+            else if (dop == 1)
+            {
+                tiles[x][y].NewObjectTileType(objectTileType.Forest);
+            }
+
 
             if (x % 2 == 0)
             {

@@ -23,6 +23,12 @@ namespace NoStepBack
         CHECK
     }
 
+    enum objectTileType
+    {
+        None,
+        Forest
+    }
+
     class Tile : Transformable, Drawable
     {
         public TileType type = TileType.None;
@@ -43,6 +49,8 @@ namespace NoStepBack
         ConvexShape hexUp;
         ConvexShape hexLeft;
         ConvexShape hexRight;
+
+        RectangleShape objectTile;
 
         public bool isSelectedTile = false;
 
@@ -147,6 +155,19 @@ namespace NoStepBack
             }
         }
 
+        public void NewObjectTileType(objectTileType type)
+        {
+            switch (type)
+            {
+                case objectTileType.Forest:
+                    objectTile.Texture = new Texture(contentDir + "ForestGrass2.png");
+                    break;
+                case objectTileType.None:
+                    
+                    break;
+            }
+        }
+
         public void TilePlusH()
         {
             if (H <= 70)
@@ -233,6 +254,8 @@ namespace NoStepBack
             }
         }
 
+
+
         public void Draw(RenderTarget target, RenderStates states)
         {
             states.Transform *= Transform;
@@ -240,6 +263,11 @@ namespace NoStepBack
             target.Draw(hexUp, states);
             target.Draw(hexLeft, states);
             target.Draw(hexRight, states);
+
+            if (objectTile != null)
+            {
+                target.Draw(objectTile);
+            }
         }
     }
 }

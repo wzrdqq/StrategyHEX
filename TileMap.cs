@@ -40,6 +40,7 @@ namespace NoStepBack
             {
                 for (int j = 0; j < Chunk.chunkSize * mapSize; j++)
                 {
+                    int dop = 0;
                     float k = (float) sN.Evaluate((double)(i * (Math.PI/2)) / zoom, (double)(j * (Math.PI / 2)) / zoom);
                     TileType type = TileType.None;
 
@@ -58,6 +59,11 @@ namespace NoStepBack
                     else if (k < 0.423f)
                     {
                         type = TileType.Ground2lvl;
+
+                        if (Math.Floor((i * (Math.PI / 2)) / zoom) % 3 == 1)
+                        {
+                            dop = 1;
+                        }
                     }
                     else if (k < 0.601f)
                     {
@@ -76,7 +82,7 @@ namespace NoStepBack
                         type = TileType.Rock2;
                     }
 
-                    SetTile(type, i, j);
+                    SetTile(type, i, j, dop);
                 }
             }
         }
@@ -111,12 +117,12 @@ namespace NoStepBack
             return new Vector2i(x, y);
         }
 
-        public void SetTile(TileType type, int x, int y)
+        public void SetTile(TileType type, int x, int y, int dop)
         {
             var chunk = GetChunk(x, y);
             var tilePos = GetTilePosFromChunk(x, y);
 
-            chunk.SetTile(type, tilePos.Y, tilePos.X);
+            chunk.SetTile(type, tilePos.Y, tilePos.X, dop);
         }
 
         public Chunk GetChunk(int x, int y)
