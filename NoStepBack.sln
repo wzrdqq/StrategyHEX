@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoStepBack", "NoStepBack.csproj", "{A6162E8D-DCB4-4891-A282-AB2C523E364C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6162E8D-DCB4-4891-A282-AB2C523E364C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6162E8D-DCB4-4891-A282-AB2C523E364C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6162E8D-DCB4-4891-A282-AB2C523E364C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6162E8D-DCB4-4891-A282-AB2C523E364C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFD7CA7E-5738-490C-B87A-3D1539324F60}
+	EndGlobalSection
+EndGlobal
