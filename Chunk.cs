@@ -52,6 +52,14 @@ namespace NoStepBack
             {
                 tiles[x][y].NewObjectTileType(objectTileType.Forest);
             }
+            else if (dop == 2)
+            {
+                tiles[x][y].NewObjectTileType(objectTileType.Rocks);
+            }
+            else if (dop == 3)
+            {
+                tiles[x][y].NewObjectTileType(objectTileType.Vulkan);
+            }
         }
 
         public void NewTilePosition(Tile tile, Vector2i posTile)

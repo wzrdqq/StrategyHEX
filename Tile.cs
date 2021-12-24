@@ -26,7 +26,9 @@ namespace NoStepBack
     enum objectTileType
     {
         None,
-        Forest
+        Forest,
+        Rocks,
+        Vulkan
     }
 
     class Tile : Transformable, Drawable
@@ -164,8 +166,14 @@ namespace NoStepBack
                 case objectTileType.Forest:                   
                     objectTile.Texture = new Texture(contentDir + "ForestGrass2.png");
                     break;
+                case objectTileType.Rocks:
+                    objectTile.Texture = new Texture(contentDir + "RocksGrass2.png");
+                    break;
+                case objectTileType.Vulkan:
+                    objectTile.Texture = new Texture(contentDir + "VulkanGrass2.png");
+                    break;
                 case objectTileType.None:
-                    
+                    objectTile.Texture = null;
                     break;
             }
         }

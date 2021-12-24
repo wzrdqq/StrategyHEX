@@ -23,6 +23,8 @@ namespace NoStepBack
 
         public static float zoom = 27f;
 
+        public static float zoomObjects = 5f;
+
         public TileMap()
         {
             chunks = new Chunk[mapSize][];
@@ -35,13 +37,16 @@ namespace NoStepBack
             centerChunk = new Vector2i(mapSize/2, mapSize / 2);
 
             Random rand = new Random();
-            MyOpenSimplexNoise sN = new MyOpenSimplexNoise(rand.Next());
+            int seed = rand.Next();
+            MyOpenSimplexNoise sN = new MyOpenSimplexNoise(seed);
+            MyOpenSimplexNoise sN2 = new MyOpenSimplexNoise(seed);
             for (int i = 0; i < Chunk.chunkSize * mapSize; i++)
             {
                 for (int j = 0; j < Chunk.chunkSize * mapSize; j++)
                 {
                     int dop = 0;
                     float k = (float) sN.Evaluate((double)(i * (Math.PI/2)) / zoom, (double)(j * (Math.PI / 2)) / zoom);
+                    float k2 = (float)sN2.Evaluate((double)(i * (Math.PI / 2)) / zoomObjects, (double)(j * (Math.PI / 2)) / zoomObjects);
                     TileType type = TileType.None;
 
                     if (k < -0.217f)
@@ -56,9 +61,17 @@ namespace NoStepBack
                     {
                         type = TileType.Ground1lvl;
 
-                        if (((k > 0.08f) && (k < 0.11f)) || ((k > 0.17f) && (k < 0.19f)) || ((k > 0.23f) && (k < 0.26f)))
+                        if ((k2 > 0f) && (k2 < 0.5f))
                         {
                             dop = 1;
+                        }
+                        if ((k2 > 0.2f) && (k2 < 0.25f))
+                        {
+                            dop = 2;
+                        }
+                        if ((k2 > 0.23f) && (k2 < 0.24f))
+                        {
+                            dop = 3;
                         }
                     }
                     else if (k < 0.423f)
