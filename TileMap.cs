@@ -55,15 +55,15 @@ namespace NoStepBack
                     else if (k < 0.271f)
                     {
                         type = TileType.Ground1lvl;
+
+                        if (((k > 0.08f) && (k < 0.11f)) || ((k > 0.17f) && (k < 0.19f)) || ((k > 0.23f) && (k < 0.26f)))
+                        {
+                            dop = 1;
+                        }
                     }
                     else if (k < 0.423f)
                     {
                         type = TileType.Ground2lvl;
-
-                        if (Math.Floor((i * (Math.PI / 2)) / zoom) % 3 == 1)
-                        {
-                            dop = 1;
-                        }
                     }
                     else if (k < 0.601f)
                     {

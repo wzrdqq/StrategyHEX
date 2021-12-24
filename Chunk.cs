@@ -35,16 +35,6 @@ namespace NoStepBack
         {
             tiles[x][y] = new Tile(type);
 
-            if (dop == 0)
-            {
-                tiles[x][y].NewObjectTileType(objectTileType.None);
-            }
-            else if (dop == 1)
-            {
-                tiles[x][y].NewObjectTileType(objectTileType.Forest);
-            }
-
-
             if (x % 2 == 0)
             {
                 tiles[x][y].Position = new SFML.System.Vector2f(y * 2 * Tile.offsetX, x * Tile.offsetY - tiles[x][y].H);
@@ -54,6 +44,14 @@ namespace NoStepBack
                 tiles[x][y].Position = new SFML.System.Vector2f(y * 2 * Tile.offsetX - 1 * Tile.offsetX, x * Tile.offsetY - tiles[x][y].H);
             }
 
+            if (dop == 0)
+            {
+                tiles[x][y].NewObjectTileType(objectTileType.None);
+            }
+            else if (dop == 1)
+            {
+                tiles[x][y].NewObjectTileType(objectTileType.Forest);
+            }
         }
 
         public void NewTilePosition(Tile tile, Vector2i posTile)

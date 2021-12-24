@@ -157,9 +157,11 @@ namespace NoStepBack
 
         public void NewObjectTileType(objectTileType type)
         {
+            objectTile = new RectangleShape(new Vector2f(156, 90));
+            objectTile.Position = new Vector2f(objectTile.Position.X + vecDot[1].X, objectTile.Position.Y - vecDot[0].Y + H / 2);
             switch (type)
             {
-                case objectTileType.Forest:
+                case objectTileType.Forest:                   
                     objectTile.Texture = new Texture(contentDir + "ForestGrass2.png");
                     break;
                 case objectTileType.None:
@@ -172,6 +174,8 @@ namespace NoStepBack
         {
             if (H <= 70)
             {
+                objectTile.Texture = null;
+
                 H = H + 10;
 
                 TileType type = (TileType) M.GetValue((int) (H/10));
@@ -184,6 +188,8 @@ namespace NoStepBack
         {
             if (H >= 20)
             {
+                objectTile.Texture = null;
+
                 H = H - 10;
 
                 TileType type = (TileType)M.GetValue((int)(H / 10));
@@ -264,9 +270,9 @@ namespace NoStepBack
             target.Draw(hexLeft, states);
             target.Draw(hexRight, states);
 
-            if (objectTile != null)
+            if (objectTile.Texture != null)
             {
-                target.Draw(objectTile);
+                target.Draw(objectTile, states);
             }
         }
     }
